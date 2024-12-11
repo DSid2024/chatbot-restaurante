@@ -1,0 +1,26 @@
+# Cada linha será comentada, explicando a função e inclusão
+
+# Ignora o diretório da virtual environment, onde ficam pacotes instalados localmente
+venv/
+# Em alguns casos, o venv pode ter outro nome, então adapte se necessário. Exemplos:
+env/
+.venv/
+
+# Ignora arquivos específicos do Python criados dinamicamente
+__pycache__/
+
+# Ignora arquivos de log
+*.log
+
+# Ignora arquivos de cache da ferramenta de build
+build/
+dist/
+
+# Ignora arquivos de configurações do ambiente do editor/IDE
+*.env
+.vscode/
+.idea/
+
+# Ignora arquivos temporários do sistema
+.DS_Store
+Thumbs.db
