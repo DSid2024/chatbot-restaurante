@@ -5,7 +5,6 @@ from .blueprints.reservations import reservations_bp
 from .blueprints.orders import orders_bp
 
 
-
 def create_app():
     """
     Factory para criar e configurar a aplicação Flask.
@@ -28,12 +27,30 @@ def create_app():
     # Rota simples de teste
     @app.route('/')
     def index():
-        return {"message": "Bem-vindo ao Chatbot Restaurante API!"}, 200
+        return {"message": "Bem-vindo ao Chatbot Restaurante API! Condições especiais para casamentos e/ou eventos"}, 200
 
     return app
 
 
+# Cria a aplicação
+app = create_app()
+
+
+# Configuração para serverless
+def handler(request, context):
+    """
+    Adapta a aplicação Flask para plataformas serverless como Vercel, AWS Lambda, etc.
+
+    No Vercel, por exemplo, a API será acessada pelo vercel.json, que invocará essa função automaticamente.
+
+    request representa a requisição HTTP recebida no ambiente serverless. É um objeto fornecido pela plataforma (como AWS ou Vercel).
+
+    context contém informações adicionais sobre a execução da função serverless (por exemplo, na AWS Lambda, inclui o tempo limite, identificadores, etc.).
+
+    """
+    return app(request.environ, context)
+
+
 if __name__ == '__main__':
-    # Cria a aplicação e roda no modo debug
-    app = create_app()
+    # Roda localmente no modo debug (não usado em produção serverless)
     app.run(debug=True)
