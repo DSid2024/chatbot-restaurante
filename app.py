@@ -1,8 +1,8 @@
 from flask import Flask
 from flask_babel import Babel
-from .blueprints.menu import menu_bp
-from .blueprints.reservations import reservations_bp
-from .blueprints.orders import orders_bp
+from app.blueprints.menu import menu_bp  # Importação absoluta
+from app.blueprints.reservations import reservations_bp  # Importação absoluta
+from app.blueprints.orders import orders_bp  # Importação absoluta
 
 
 def create_app():
@@ -46,7 +46,6 @@ def handler(request, context):
     request representa a requisição HTTP recebida no ambiente serverless. É um objeto fornecido pela plataforma (como AWS ou Vercel).
 
     context contém informações adicionais sobre a execução da função serverless (por exemplo, na AWS Lambda, inclui o tempo limite, identificadores, etc.).
-
     """
     return app(request.environ, context)
 
